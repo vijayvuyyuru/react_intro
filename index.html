@@ -16,11 +16,22 @@
                 age: 10
             }
 
-            handeMouseOver=(e)=>{
-                console.log('should increase age');
+            handleMouseOver=(e)=>{
+                let newAge = this.state.age;
                 this.setState({
-                    age: 50
+                    age: newAge+1
                 })
+            }
+
+            handleChange = (e)=>{
+                this.setState({
+                    name: e.target.value
+                })
+            }
+
+            handleSubmit = (e)=>{
+                e.preventDefault();
+
             }
 
             render(){
@@ -28,7 +39,11 @@
                     <div className ="app-content">
                         <h1>Wassup fool</h1>
                         <p>My name is {this.state.name} and I am {this.state.age} years old</p>
-                        <button onMouseOver = {this.handeMouseOver}>Hover on me</button>
+                        <button onMouseOver = {this.handleMouseOver}>Increase Age</button>
+                        <form onSubmit={this.handleSubmit}>
+                            <input type ="text" onChange={this.handleChange}/>
+                            <button>Submit</button>
+                        </form>
                     </div>
                 )
             }
